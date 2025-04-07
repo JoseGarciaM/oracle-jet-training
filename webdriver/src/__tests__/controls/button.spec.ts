@@ -1,4 +1,4 @@
-// test/button.spec.ts
+// webdriver/src/__tests__/controls/button.spec.ts
 import ojwd, { DriverManager } from "@oracle/oraclejet-webdriver";
 import { ojButton } from "@oracle/oraclejet-webdriver/elements";
 import { By, WebDriver } from "selenium-webdriver";
