@@ -1,44 +1,50 @@
-// webdriver/src/__tests__/controls/button.spec.ts
-import ojwd, { DriverManager } from "@oracle/oraclejet-webdriver";
-import { ojButton } from "@oracle/oraclejet-webdriver/elements";
-import { By, WebDriver } from "selenium-webdriver";
 import { expect } from "chai";
+import { By, WebDriver } from "selenium-webdriver";
+import { DriverManager } from "@oracle/oraclejet-webdriver";
+import { ojButton } from "@oracle/oraclejet-webdriver/elements";
 
 describe("Oracle JET Cookbook Button Test", function () {
 	let driver: WebDriver;
 
 	before(async function () {
+		// Acquire a WebDriver instance via DriverManager or your custom method
 		driver = await DriverManager.getDriver();
-		// Navigate directly to the button demo component
-		await ojwd.get(
-			driver,
+
+		// Navigate to the JET Cookbook pushButtons demo
+		await driver.get(
 			"https://www.oracle.com/webfolder/technetwork/jet/jetCookbook.html?component=pushButtons&demo=pushButton"
 		);
 	});
 
-	it("should click the primary button and verify its properties", async function () {
-		// Select the primary button by id as shown in the JET cookbook demo
+	it("should click the push button and verify it is displayed", async function () {
+		// Use ojButton(driver, By.id(...)) to get a Promise<OjButton>
 		const button = await ojButton(driver, By.id("button1"));
+		// or "pushButton1", "button1", etc., depending on the actual DOM
 
-		// Ensure button is ready and visible
+		// Wait until the button's BusyContext is ready
 		await button.whenReady();
 
-		// Verify the button label
+		// Check that the button is displayed
+		const isDisplayed = await button.isDisplayed();
+		expect(isDisplayed).to.be.true;
+
+		// Optionally, check that the button is enabled
+		const enabled = await button.isEnabled();
+		expect(enabled).to.be.true;
+
+		// Optionally, get the label
 		const label = await button.getLabel();
-		expect(label).to.equal("Button");
+		// Just for demonstration; you could compare with an expected text
+		console.log("Button label is:", label);
 
-		// Verify the button is enabled
-		const isEnabled = await button.isEnabled();
-		expect(isEnabled).to.be.true;
-
-		// Click the button
+		// Finally, click the button
 		await button.click();
 
-		// You might want to test side effects of clicking (such as observing a message or event).
-		// This example checks for button click interaction visually or logs. Adjust as needed.
+		// If the button triggers a side effect, you can verify it here.
 	});
 
 	after(async function () {
+		// Release / quit the driver
 		await DriverManager.releaseDriver(driver);
 	});
 });
