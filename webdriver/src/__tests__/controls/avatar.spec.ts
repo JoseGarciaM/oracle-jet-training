@@ -1,0 +1,1 @@
+// no avatar test adapter
