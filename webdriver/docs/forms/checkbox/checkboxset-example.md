@@ -1,7 +1,3 @@
-Below is a **Markdown** file describing how to test an **oj-checkboxset** in the **JET Cookbook** “states” demo, using **@oracle/oraclejet-webdriver** to wrap and interact with the checkbox set. This example covers basic readiness checks, retrieving the current selected values, and changing them to exercise multiple-selection behavior.
-
----
-
 # Testing an oj-checkboxset with @oracle/oraclejet-webdriver
 
 The following **TypeScript** example shows how to automate tests against an **oj-checkboxset** in the [JET Cookbook checkboxsets “states” demo](https://www.oracle.com/webfolder/technetwork/jet/jetCookbook.html?component=checkboxsets&demo=states). It uses:
@@ -99,5 +95,3 @@ describe("Oracle JET Cookbook oj-checkboxset Demo Tests", function () {
 
 7. **Tear Down**
    - `after()` calls `DriverManager.releaseDriver(driver)` to close the browser session when tests are done.
-
-With this **oj-checkboxset** test, JET developers can validate multi-selection logic, confirm readiness, and ensure that user interactions (e.g., clicking checkboxes) correctly update the component’s value.
