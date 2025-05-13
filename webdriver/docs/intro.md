@@ -62,3 +62,5 @@ This library depends on the following:
 - `@oracle/oraclejet`
 - `selenium-webdriver >= 4.0.0`
 - `NodeJS v12+`
+
+// get value and change value methods
