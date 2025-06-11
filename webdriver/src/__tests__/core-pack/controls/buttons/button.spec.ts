@@ -1,9 +1,3 @@
-/**
- * button.spec.ts
- *
- * E2E test for the Core Pack “Push Button” demo:
- * https://www.oracle.com/webfolder/technetwork/jet/jetCookbook.html?component=buttonsCorepack&demo=pushButton
- */
 import { Builder, WebDriver, By } from "selenium-webdriver";
 import {
 	findButton,
